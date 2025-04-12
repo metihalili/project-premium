@@ -13,27 +13,14 @@
             background: linear-gradient(135deg, rgba(50, 50, 50, 0.8), rgba(99, 99, 99, 0.7));
         }
 
-        /* New Text Color Scheme */
-        .text-primary {
-            color: #2a2a2a;
-        }
+        .text-primary { color: #2a2a2a; }
+        .text-secondary { color: #999; }
+        .bg-primary { background-color: #2a2a2a; }
+        .bg-highlight { background-color: #f1c40f; }
 
-        .text-secondary {
-            color: #999;
-        }
-
-        .bg-primary {
-            background-color: #2a2a2a;
-        }
-
-        .bg-highlight {
-            background-color: #f1c40f;
-        }
-
-        /* Enhanced button styles */
         .button {
-            background-color: #f1c40f;
-            color: #2a2a2a;
+            background-color: #585856;
+            color: #918d8d;
             padding: 12px 24px;
             border-radius: 8px;
             font-weight: bold;
@@ -41,11 +28,10 @@
         }
 
         .button:hover {
-            background-color: #e67e22;
+            background-color: #666564;
             color: white;
         }
 
-        /* Professional Typography */
         body {
             font-family: 'Roboto', sans-serif;
         }
@@ -112,8 +98,6 @@
 
         function scrollToServices() {
             gsap.to(window, {duration: 1.5, scrollTo: "#services", ease: "power2.out"});
-
-            // Trigger animations for the services section when the button is clicked
             gsap.from("#services h2", {opacity: 0, y: 30, duration: 1, ease: "power2.out"});
             gsap.from(".grid div", {
                 opacity: 0,
@@ -123,18 +107,14 @@
                 ease: "power2.out",
                 delay: 1
             });
-
-            // Animate in the services content after scroll
             gsap.to("#services .grid div", {opacity: 1, y: 0, duration: 1.5, ease: "power2.out", delay: 1});
             gsap.to("#services h2", {opacity: 1, y: 0, duration: 1.5, ease: "power2.out", delay: 1.5});
         }
 
         document.addEventListener("DOMContentLoaded", function () {
-            // Initial animations
             gsap.to("#title", {opacity: 1, y: -10, duration: 1, ease: "power2.out"});
             gsap.to("#subtitle", {opacity: 1, y: -10, duration: 1.2, ease: "power2.out", delay: 0.3});
 
-            // Hover effect on Explore button
             document.querySelector("#explore").addEventListener("mouseover", () => {
                 gsap.to("#explore", {scale: 1.1, duration: 0.3, ease: "power2.out"});
             });
@@ -143,29 +123,52 @@
                 gsap.to("#explore", {scale: 1, duration: 0.3, ease: "power2.out"});
             });
 
-            // Fix for the disappearing elements
             gsap.to("#services .grid div", {opacity: 1, y: 0, duration: 1, ease: "power2.out"});
             gsap.to("#services h2", {opacity: 1, y: 0, duration: 1, ease: "power2.out"});
         });
     </script>
 </head>
-<body class="bg-gray-100">
-    <header class="bg-primary text-white p-4 text-center text-xl md:text-3xl font-extrabold shadow-lg flex flex-col md:flex-row justify-between items-center">
-        <span>PREMIUM Excavation Services</span>
-        <div class="flex space-x-2 mt-2 md:mt-0">
-            <button onclick="changeLanguage('en')" class="px-2 md:px-3">
-                <img src="https://flagcdn.com/w40/gb.png" alt="English" class="w-6 h-4 inline"> EN
-            </button>
-            <button onclick="changeLanguage('sq')" class="px-2 md:px-3">
-                <img src="https://flagcdn.com/w40/al.png" alt="Albanian" class="w-6 h-4 inline"> AL
-            </button>
-            <button onclick="changeLanguage('mk')" class="px-2 md:px-3">
-                <img src="https://flagcdn.com/w40/mk.png" alt="Macedonian" class="w-6 h-4 inline"> MK
-            </button>
+<body class="bg-black">
+
+    <!-- ✅ Fixed Professional Navbar -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-primary text-white shadow-lg">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <div class="flex items-center space-x-3">
+                <img src="excavator-logo-emblem-design-template-260nw-2543521517.webp" alt="Excavator Icon" class="w-36 h-16">
+                <span class="text-xl md:text-2xl font-extrabold">PREMIUM Excavation</span>
+            </div>
+            <div class="flex items-center space-x-3">
+                <div class="lg:hidden">
+                    <button id="menu-toggle" class="text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id="menu" class="hidden lg:flex space-x-3">
+                    <button onclick="changeLanguage('en')" class="flex items-center space-x-1">
+                        <img src="https://flagcdn.com/w40/gb.png" alt="English" class="w-5 h-4"> <span>EN</span>
+                    </button>
+                    <button onclick="changeLanguage('sq')" class="flex items-center space-x-1">
+                        <img src="https://flagcdn.com/w40/al.png" alt="Albanian" class="w-5 h-4"> <span>AL</span>
+                    </button>
+                    <button onclick="changeLanguage('mk')" class="flex items-center space-x-1">
+                        <img src="https://flagcdn.com/w40/mk.png" alt="Macedonian" class="w-5 h-4"> <span>MK</span>
+                    </button>
+                </div>
+            </div>
         </div>
     </header>
-    
-    <main class="container mx-auto p-8">
+
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+
+    <!-- Add padding top to offset fixed nav -->
+    <main class="container mx-auto p-8 pt-[80px]">
         <section class="parallax flex items-center justify-center text-white text-center">
             <div class="bg-black bg-opacity-50 p-6 md:p-10 rounded-lg">
                 <h1 class="text-4xl md:text-5xl font-extrabold opacity-0" id="title">Premium Excavation Services</h1>
@@ -193,7 +196,6 @@
             </div>
         </section>
 
-        <!-- Updated Contact Section with More Spacing -->
         <section class="contact-section">
             <h2 class="text-3xl font-bold text-white" id="contact">Get in Touch</h2>
             <p class="mt-4 text-lg" id="contactForm">Have questions or need more information? Call us directly at the number below.</p>
@@ -202,23 +204,22 @@
             </p>
         </section>
     </main>
-    
+
     <footer class="bg-primary text-white text-center p-8 md:p-10 mt-16 shadow-lg">
         <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
             <div class="text-center md:text-left">
                 <p class="text-xl font-semibold">PREMIUM Excavation Services</p>
                 <p class="mt-2 text-lg">With over 20 years of experience in the excavation industry, we deliver top-tier services to ensure quality results every time.</p>
             </div>
-
             <div class="mt-6 md:mt-0">
                 <p class="text-lg font-semibold">Contact Us</p>
                 <p class="mt-2 text-lg">Phone: <a href="tel:+38975216775" class="underline hover:text-yellow-500">+389 75-216-775</a></p>
             </div>
         </div>
-        
         <div class="mt-6 text-center">
             <p class="text-sm">&copy; 2025 PREMIUM Excavation Services. All Rights Reserved.</p>
         </div>
     </footer>
 </body>
 </html>
+    
