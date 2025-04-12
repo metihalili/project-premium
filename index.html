@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREMIUM Excavation Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <style>
+        /* Custom Gradient */
+        .bg-gradient {
+            background: linear-gradient(135deg, rgba(50, 50, 50, 0.8), rgba(99, 99, 99, 0.7));
+        }
+
+        /* New Text Color Scheme */
+        .text-primary {
+            color: #2a2a2a;
+        }
+
+        .text-secondary {
+            color: #999;
+        }
+
+        .bg-primary {
+            background-color: #2a2a2a;
+        }
+
+        .bg-highlight {
+            background-color: #f1c40f;
+        }
+
+        /* Enhanced button styles */
+        .button {
+            background-color: #f1c40f;
+            color: #2a2a2a;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #e67e22;
+            color: white;
+        }
+
+        /* Professional Typography */
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+
+        .contact-section {
+            padding: 40px 10px;
+            background-color: #2a2a2a;
+            color: white;
+        }
+    </style>
+    <script>
+        function changeLanguage(lang) {
+            const translations = {
+                "en": {
+                    "title": "Premium Excavation Services",
+                    "subtitle": "Providing top-tier excavation solutions for construction and land development.",
+                    "explore": "Explore Our Services",
+                    "whyChoose": "Why Choose Us?",
+                    "experienced": "Experienced Team",
+                    "equipment": "Modern Equipment",
+                    "reliable": "Reliable Service",
+                    "contact": "Get in Touch",
+                    "contactNumber": "Call Us: +389 75-216-775"
+                },
+                "sq": {
+                    "title": "Shërbime Profesionale të Gërmimit",
+                    "subtitle": "Ofrojmë zgjidhje të nivelit të lartë për ndërtim dhe zhvillim të tokës.",
+                    "explore": "Eksploro Shërbimet",
+                    "whyChoose": "Pse të na zgjidhni?",
+                    "experienced": "Ekip me përvojë",
+                    "equipment": "Pajisje Moderne",
+                    "reliable": "Shërbim i Besueshëm",
+                    "contact": "Na kontaktoni",
+                    "contactNumber": "Na telefononi: +389 75-216-775"
+                },
+                "mk": {
+                    "title": "Професионални ископни услуги",
+                    "subtitle": "Обезбедуваме врвни решенија за градежни и земјоделски проекти.",
+                    "explore": "Истражи Услуги",
+                    "whyChoose": "Зошто да не изберете нас?",
+                    "experienced": "Искусен Тим",
+                    "equipment": "Модерна Опрема",
+                    "reliable": "Доверлива Услуга",
+                    "contact": "Контактирајте нè",
+                    "contactNumber": "Повикајте нè: +389 75-216-775"
+                }
+            };
+
+            document.getElementById("title").textContent = translations[lang].title;
+            document.getElementById("subtitle").textContent = translations[lang].subtitle;
+            document.getElementById("explore").textContent = translations[lang].explore;
+            document.getElementById("whyChoose").textContent = translations[lang].whyChoose;
+            document.getElementById("experienced").textContent = translations[lang].experienced;
+            document.getElementById("equipment").textContent = translations[lang].equipment;
+            document.getElementById("reliable").textContent = translations[lang].reliable;
+            document.getElementById("contact").textContent = translations[lang].contact;
+            document.getElementById("contactNumber").textContent = translations[lang].contactNumber;
+        }
+
+        function scrollToServices() {
+            gsap.to(window, {duration: 1.5, scrollTo: "#services", ease: "power2.out"});
+
+            // Trigger animations for the services section when the button is clicked
+            gsap.from("#services h2", {opacity: 0, y: 30, duration: 1, ease: "power2.out"});
+            gsap.from(".grid div", {
+                opacity: 0,
+                y: 30,
+                duration: 1,
+                stagger: 0.3,
+                ease: "power2.out",
+                delay: 1
+            });
+
+            // Animate in the services content after scroll
+            gsap.to("#services .grid div", {opacity: 1, y: 0, duration: 1.5, ease: "power2.out", delay: 1});
+            gsap.to("#services h2", {opacity: 1, y: 0, duration: 1.5, ease: "power2.out", delay: 1.5});
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Initial animations
+            gsap.to("#title", {opacity: 1, y: -10, duration: 1, ease: "power2.out"});
+            gsap.to("#subtitle", {opacity: 1, y: -10, duration: 1.2, ease: "power2.out", delay: 0.3});
+
+            // Hover effect on Explore button
+            document.querySelector("#explore").addEventListener("mouseover", () => {
+                gsap.to("#explore", {scale: 1.1, duration: 0.3, ease: "power2.out"});
+            });
+
+            document.querySelector("#explore").addEventListener("mouseleave", () => {
+                gsap.to("#explore", {scale: 1, duration: 0.3, ease: "power2.out"});
+            });
+
+            // Fix for the disappearing elements
+            gsap.to("#services .grid div", {opacity: 1, y: 0, duration: 1, ease: "power2.out"});
+            gsap.to("#services h2", {opacity: 1, y: 0, duration: 1, ease: "power2.out"});
+        });
+    </script>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-primary text-white p-4 text-center text-xl md:text-3xl font-extrabold shadow-lg flex flex-col md:flex-row justify-between items-center">
+        <span>PREMIUM Excavation Services</span>
+        <div class="flex space-x-2 mt-2 md:mt-0">
+            <button onclick="changeLanguage('en')" class="px-2 md:px-3">
+                <img src="https://flagcdn.com/w40/gb.png" alt="English" class="w-6 h-4 inline"> EN
+            </button>
+            <button onclick="changeLanguage('sq')" class="px-2 md:px-3">
+                <img src="https://flagcdn.com/w40/al.png" alt="Albanian" class="w-6 h-4 inline"> AL
+            </button>
+            <button onclick="changeLanguage('mk')" class="px-2 md:px-3">
+                <img src="https://flagcdn.com/w40/mk.png" alt="Macedonian" class="w-6 h-4 inline"> MK
+            </button>
+        </div>
+    </header>
+    
+    <main class="container mx-auto p-8">
+        <section class="parallax flex items-center justify-center text-white text-center">
+            <div class="bg-black bg-opacity-50 p-6 md:p-10 rounded-lg">
+                <h1 class="text-4xl md:text-5xl font-extrabold opacity-0" id="title">Premium Excavation Services</h1>
+                <p class="text-lg opacity-0 mt-2 md:mt-3" id="subtitle">Providing top-tier excavation solutions for construction and land development.</p>
+                <button onclick="scrollToServices()" id="explore" class="mt-4 button">Explore Our Services</button>
+            </div>
+        </section>
+
+        <section id="services" class="mt-32 p-10 bg-white shadow-lg rounded-lg text-center bg-gradient">
+            <h2 class="text-3xl font-bold text-primary opacity-0" id="whyChoose">Why Choose Us?</h2>
+            <p class="mt-6 text-lg text-secondary">We have over 20 years of experience in excavation, equipped with modern machinery and expertise to complete any job efficiently and safely.</p>
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-6 bg-gray-200 rounded-lg shadow-md opacity-0">
+                    <h3 class="text-xl font-semibold text-primary" id="experienced">Experienced Team</h3>
+                    <p class="mt-2 text-sm text-gray-600">Our team brings years of experience to every project, ensuring quality and efficiency.</p>
+                </div>
+                <div class="p-6 bg-gray-200 rounded-lg shadow-md opacity-0">
+                    <h3 class="text-xl font-semibold text-primary" id="equipment">Modern Equipment</h3>
+                    <p class="mt-2 text-sm text-gray-600">We use the latest excavation equipment to handle any project with precision and speed.</p>
+                </div>
+                <div class="p-6 bg-gray-200 rounded-lg shadow-md opacity-0">
+                    <h3 class="text-xl font-semibold text-primary" id="reliable">Reliable Service</h3>
+                    <p class="mt-2 text-sm text-gray-600">You can count on us to meet deadlines and deliver results that exceed expectations.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Updated Contact Section with More Spacing -->
+        <section class="contact-section">
+            <h2 class="text-3xl font-bold text-white" id="contact">Get in Touch</h2>
+            <p class="mt-4 text-lg" id="contactForm">Have questions or need more information? Call us directly at the number below.</p>
+            <p class="mt-4 text-lg" id="contactNumber">
+                <a href="tel:+38975216775" class="underline hover:text-yellow-500">Call Us: +389 75-216-775</a>
+            </p>
+        </section>
+    </main>
+    
+    <footer class="bg-primary text-white text-center p-8 md:p-10 mt-16 shadow-lg">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="text-center md:text-left">
+                <p class="text-xl font-semibold">PREMIUM Excavation Services</p>
+                <p class="mt-2 text-lg">With over 20 years of experience in the excavation industry, we deliver top-tier services to ensure quality results every time.</p>
+            </div>
+
+            <div class="mt-6 md:mt-0">
+                <p class="text-lg font-semibold">Contact Us</p>
+                <p class="mt-2 text-lg">Phone: <a href="tel:+38975216775" class="underline hover:text-yellow-500">+389 75-216-775</a></p>
+            </div>
+        </div>
+        
+        <div class="mt-6 text-center">
+            <p class="text-sm">&copy; 2025 PREMIUM Excavation Services. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
